@@ -17,7 +17,12 @@ import com.applitools.eyes.TestResultsSummary;
 import com.applitools.eyes.config.Configuration;
 import com.applitools.eyes.selenium.BrowserType;
 import com.applitools.eyes.selenium.Eyes;
+import com.applitools.eyes.visualgrid.model.ChromeEmulationInfo;
 import com.applitools.eyes.visualgrid.model.DesktopBrowserInfo;
+import com.applitools.eyes.visualgrid.model.DeviceName;
+import com.applitools.eyes.visualgrid.model.IosDeviceInfo;
+import com.applitools.eyes.visualgrid.model.IosDeviceName;
+import com.applitools.eyes.visualgrid.model.ScreenOrientation;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 
 public class UltraFastRunner {
@@ -83,6 +88,10 @@ public class UltraFastRunner {
 			
 		case "EDGE_LEGACY":
 			suiteConfig.addBrowser(new DesktopBrowserInfo(viewPortWidth, viewPortHeight, BrowserType.EDGE_CHROMIUM, desktopBaseline));
+			suiteConfig.setViewportSize(new RectangleSize(viewPortWidth, viewPortHeight));
+			
+		case "IPHONE X":
+			suiteConfig.addBrowser(new ChromeEmulationInfo(DeviceName.iPhone_X, ScreenOrientation.PORTRAIT));
 			suiteConfig.setViewportSize(new RectangleSize(viewPortWidth, viewPortHeight));
 			break;
 		}
